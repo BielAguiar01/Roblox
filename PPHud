@@ -822,6 +822,8 @@ end
   Info.Postfix = Info.Postfix or ""
   Info.Callback = Info.Callback or function() end
 
+  task.spawn(Info.Callback, Info.Default)
+
   if Info.Minimum > Info.Maximum then
     local ValueBefore = Info.Minimum
     Info.Minimum, Info.Maximum = Info.Maximum, ValueBefore
