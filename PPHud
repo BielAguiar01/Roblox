@@ -823,6 +823,10 @@ end
   Info.Callback = Info.Callback or function() end
 
   task.spawn(Info.Callback, Info.Default)
+  if Info.Flag then
+    library.flags[Info.Flag] = Info.Default
+  end
+
 
   if Info.Minimum > Info.Maximum then
     local ValueBefore = Info.Minimum
