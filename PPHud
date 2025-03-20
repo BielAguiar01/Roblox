@@ -717,7 +717,7 @@ end
     task.spawn(CheckArgs.Callback, bool)
     State = bool
     if CheckArgs.Flag ~= nil then
-        library.Flags[CheckArgs.Flag] = bool
+        library.flags[CheckArgs.Flag] = bool
     end
     
     if State then
@@ -933,7 +933,7 @@ end
             local SizeX = (FinalValue - Info.Minimum) / (Info.Maximum - Info.Minimum)
             Utilities:Tween(Slider.SliderOuter.SliderInner, 0.09, {Size = UDim2.new(SizeX,0,1,0)})
             if Info.Flag then
-                library.Flags[Info.Flag] = FinalValue
+                library.flags[Info.Flag] = FinalValue
             end
             Slider.SliderOuter.SliderValueText.Text = StepFormat:format(FinalValue)..Info.Postfix
             task.spawn(Info.Callback, FinalValue)
@@ -1131,7 +1131,9 @@ end
 
     function DropdownTable:Select(v)
         task.spawn(Info.Callback, v)
-        library[Info.Flag] = v
+        if Info.Flag then
+            library.flags[Info.Flag] = v
+        end
 
         if Info.ChangeText then
             Dropdown.DropdownFrame.DropdownText.Text = v
@@ -1156,7 +1158,9 @@ end
                 end
             end
             task.spawn(Info.Callback, MultiTable)
-            library[Info.Flag] = MultiTable
+            if Info.Flag then
+                library.flags[Info.Flag] = MultiTable
+            end
             
 
             if Info.ChangeText then
