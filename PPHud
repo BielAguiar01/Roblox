@@ -1131,6 +1131,7 @@ end
 
     function DropdownTable:Select(v)
         task.spawn(Info.Callback, v)
+        library[Info.Flag] = v
 
         if Info.ChangeText then
             Dropdown.DropdownFrame.DropdownText.Text = v
@@ -1155,6 +1156,8 @@ end
                 end
             end
             task.spawn(Info.Callback, MultiTable)
+            library[Info.Flag] = MultiTable
+            
 
             if Info.ChangeText then
                 Dropdown.DropdownFrame.DropdownText.Text = ""
