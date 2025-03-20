@@ -996,6 +996,7 @@ end
     Info.Default = Info.Default or nil
     Info.List = Info.List or {}
     Info.ChangeText = Info.ChangeText or true
+    Info.Callback = Info.Callback or function() end
 
     local State = false
 
